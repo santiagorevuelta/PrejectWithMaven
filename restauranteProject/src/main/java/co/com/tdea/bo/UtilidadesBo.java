@@ -15,13 +15,16 @@ public class UtilidadesBo {
         
     public static Connection getConnectionApp() {
         try{
-          Connection con = DriverManager.getConnection("jdbc:sqlserver://wdb4.my-hosting-panel.com:1433;user=abicomco_users;password=!oj338I6;database=abicomco_users;encrypt=true;trustServerCertificate=true");          
+          Connection con = DriverManager.getConnection("jdbc:sqlserver://@198.38.83.244:1433;user=abicomco_users;password=!oj338I6;database=abicomco_users;encrypt=false;trustServerCertificate=true;IntegratedSecurity=False;");          
+          System.out.println("Hello World!");
           logger.info("Conexion Exitosa");
           return con;
         }catch(SQLException e){
+             System.out.println(e.toString());
             logger.error(e.toString());
             return null;
         } catch (Exception e) {
+             System.out.println(e.toString());
             logger.error(e.toString());
               return null;
             }
@@ -35,6 +38,7 @@ public class UtilidadesBo {
                     cs = con.prepareCall(strSql);
                     cs.execute();
 		} catch (Exception e) {
+             System.out.println(e.toString());
 			logger.error(ERROR, e);
 			return e.toString();
 		} finally {
@@ -42,12 +46,14 @@ public class UtilidadesBo {
                             if (rs != null)
                                 rs.close();
                         } catch (Exception e) {
+             System.out.println(e.toString());
                                 logger.error(ERROR, e);
                         }
                         try {
                             if (ps != null)
                                 ps.close();
                         } catch (Exception e) {
+             System.out.println(e.toString());
                                 logger.error(ERROR, e);
                         }
                         try {
