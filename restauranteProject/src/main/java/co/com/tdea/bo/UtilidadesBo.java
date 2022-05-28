@@ -15,7 +15,7 @@ public class UtilidadesBo {
         
     public static Connection getConnectionApp() {
         try{
-          Connection con = DriverManager.getConnection("jdbc:sqlserver://Server=SANTIREV;database=master;Trusted_Connection=True;encrypt=false");
+          Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=admin;password=admin;database=Club;Trusted_Connection=True;encrypt=false");
           logger.info("Conexion Exitosa");
           return con;
         }catch(SQLException e){
@@ -27,7 +27,8 @@ public class UtilidadesBo {
             logger.error(e.toString());
               return null;
             }
-	}
+    }
+    
     public static String cargarDatos(String strSql) {
 		String salida = null;
 		CallableStatement cs = null;
