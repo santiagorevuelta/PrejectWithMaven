@@ -15,8 +15,7 @@ public class UtilidadesBo {
         
     public static Connection getConnectionApp() {
         try{
-          Connection con = DriverManager.getConnection("jdbc:sqlserver://@198.38.83.244:1433;user=abicomco_users;password=!oj338I6;database=abicomco_users;encrypt=false;trustServerCertificate=true;IntegratedSecurity=False;");          
-          System.out.println("Hello World!");
+          Connection con = DriverManager.getConnection("jdbc:sqlserver://Server=SANTIREV;database=master;Trusted_Connection=True;encrypt=false");
           logger.info("Conexion Exitosa");
           return con;
         }catch(SQLException e){
@@ -36,7 +35,10 @@ public class UtilidadesBo {
 		ResultSet rs = null;
 		try (Connection con = getConnectionApp()) {
                     cs = con.prepareCall(strSql);
-                    cs.execute();
+                    rs = cs.executeQuery();
+                    while (rs.next()) {
+                    System.out.println(rs.getString("unno"));
+                }
 		} catch (Exception e) {
              System.out.println(e.toString());
 			logger.error(ERROR, e);

@@ -8,7 +8,7 @@ public class Ppl {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-             String data = UtilidadesBo.cargarDatos("Select 1 from dual;");
+             String data = UtilidadesBo.cargarDatos("Select 1  AS unno  from dual;");
              ClubForm  clubform  = new ClubForm();
             clubform.show();
           /* boolean salir = false;
